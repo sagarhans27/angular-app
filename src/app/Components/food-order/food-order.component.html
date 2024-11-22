@@ -1,0 +1,42 @@
+<div class="container">
+    <h1>Food Order Details</h1>
+
+        <p style="margin-top: 1rem;">Welcome <span class="bold">{{userDetails?.f_name}}<span *ngIf="userDetails?.l_name"> {{userDetails?.l_name}}</span> !</span>. Food order details for the month of {{monthName}}</p>
+  
+        <table mat-table [dataSource]="foodReports" class="mat-elevation-z8">
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let report"> {{ report.date }} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="breakfast">
+            <th mat-header-cell *matHeaderCellDef > Breakfast </th>
+            <td mat-cell *matCellDef="let report" [ngClass]="{'bold': report.opt_ins?.breakfast == 'Pending'}">
+            {{ report.opt_ins?.breakfast || 'N/A' }}
+            </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="dinner">
+            <th mat-header-cell *matHeaderCellDef> Dinner </th>
+            <td mat-cell *matCellDef="let report" [ngClass]="{'bold': report.opt_ins?.dinner == 'Pending'}">
+            {{ report.opt_ins?.dinner || 'N/A' }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="lunch">
+            <th mat-header-cell *matHeaderCellDef> Lunch </th>
+            <td mat-cell *matCellDef="let report" [ngClass]="{'bold': report.opt_ins?.lunch == 'Pending'}">
+            {{ report.opt_ins?.lunch || 'N/A' }}
+            </td>
+        </ng-container>
+    
+       
+    
+        <tr mat-header-row *matHeaderRowDef="['date', 'breakfast', 'lunch', 'dinner']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['date', 'breakfast', 'lunch', 'dinner']"></tr>
+        </table>
+  
+    <div class="total-fine">
+      <h2>Total Fine: Rs {{ totalFine }}</h2>
+    </div>
+  </div>
+  

@@ -1,0 +1,20 @@
+.container {
+    margin: 20px;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .total-fine {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+  
+  
